@@ -1,0 +1,27 @@
+import React, { Component } from 'react';
+import { Route } from 'react-router';
+import { Layout } from './components/Layout';
+import { Home } from './components/Home';
+import { Cart } from './components/Cart';
+import config from 'react-global-configuration';
+
+
+import './custom.css'
+
+export default class App extends Component {
+    //static displayName = App.name;
+
+    constructor() {
+        super();
+        config.set({ cart: [] }, { freeze: false, environment: 'test' });
+    }
+
+    render() {
+        return (
+            <Layout>
+                <Route exact path='/' component={Home} />
+                <Route path='/cart' component={Cart} />
+            </Layout>
+        );
+    }
+}
